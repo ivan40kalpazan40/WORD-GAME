@@ -23,16 +23,18 @@ function App() {
       // keyCodes between 65 and 90
       if (event.keyCode >= 65 && event.keyCode <= 90) {
         console.log(
-          `Letter ${event.key} with keycode ${event.keyCode} is valid pick.`
+          `Letter ${event.key} with keycode ${event.keyCode} is valid pick. Guess length = ${guessWord.length}`
         );
-        setGuessWord((guess) => guess.concat(event.key));
+        if (guessWord.length < 5) {
+          setGuessWord((guess) => guess.concat(event.key));
+        }
       } else {
         console.log(`This is invalid key.`);
       }
     }
     document.addEventListener('keydown', keyPressHandler);
     return () => document.removeEventListener('keydown', keyPressHandler);
-  }, []);
+  }, [guessWord]);
 
   useEffect(() => {
     if (effectRan.current === false) {
