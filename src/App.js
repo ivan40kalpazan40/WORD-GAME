@@ -2,12 +2,16 @@ import { useEffect, useState, useRef } from 'react';
 import './App.css';
 
 function App() {
+  const effectRan = useRef(false);
   useEffect(() => {
-    fetch(process.env.REACT_APP_URL)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+    if (effectRan.current === false) {
+      fetch(process.env.REACT_APP_URL)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
+    }
+    return () => (effectRan.current = true);
   });
 
   return (
