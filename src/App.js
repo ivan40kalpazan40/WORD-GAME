@@ -8,9 +8,11 @@ function App() {
   const [word, setWord] = useState('');
   const [guessWord, setGuessWord] = useState('');
   const [wordList, setWordList] = useState([]);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
     function keyPressHandler(event) {
+      if (isGameOver) return;
       console.log(`EVENT::: `, event.keyCode);
 
       // keyCode is 8 when Backspace is pressed
@@ -19,6 +21,26 @@ function App() {
           const sliced = guess.slice(0, -1);
           return sliced;
         });
+      }
+
+      // keyCode is 13 when Enter is pressed
+      if (event.keyCode === 13) {
+        //  if guessWord length is == 5
+        if (guessWord.length !== 5) return;
+        // HERE:
+        // check if guessWord is a valid word (it is one of the words in wordList state)
+        const idx = wordList.findIndex((word) => word === guessWord);
+        if (idx === -1) {
+          console.log(`Not A Valid Word`);
+          //  TODO: Throw error & handle it properly
+          return;
+        }
+        // check if guessWord is equal to word - YOU WIN!!!
+        if (guessWord === word) {
+          setGuessWord('You Win');
+          setIsGameOver(true);
+          console.log(`You Win!!!`);
+        }
       }
 
       // keyCodes between 65 and 90
@@ -35,7 +57,7 @@ function App() {
     }
     document.addEventListener('keydown', keyPressHandler);
     return () => document.removeEventListener('keydown', keyPressHandler);
-  }, [guessWord]);
+  }, [guessWord, isGameOver]);
 
   useEffect(() => {
     if (effectRan.current === false) {
