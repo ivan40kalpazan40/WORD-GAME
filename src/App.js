@@ -12,6 +12,14 @@ function App() {
     function keyPressHandler(event) {
       console.log(`EVENT::: `, event.keyCode);
 
+      // keyCode is 8 when Backspace is pressed
+      if (event.keyCode === 8) {
+        setGuessWord((guess) => {
+          const sliced = guess.slice(0, -1);
+          return sliced;
+        });
+      }
+
       // keyCodes between 65 and 90
       if (event.keyCode >= 65 && event.keyCode <= 90) {
         console.log(
