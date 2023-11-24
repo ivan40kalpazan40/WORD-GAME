@@ -7,6 +7,7 @@ function App() {
   const effectRan = useRef(false);
   const [word, setWord] = useState('');
   const [guessWord, setGuessWord] = useState('');
+  const [wordList, setWordList] = useState([]);
 
   useEffect(() => {
     function keyPressHandler(event) {
@@ -42,6 +43,9 @@ function App() {
         .then((response) => response.json())
         .then((data) => {
           const idx = index(data.length);
+          setWordList((list) =>
+            data.map((dataItem) => unifyString(dataItem.word, 'store'))
+          );
           const pickedWord = unifyString(data[idx].word, 'store');
           setWord(pickedWord);
         });
