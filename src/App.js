@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { randomIndex as index } from './utils/helpers';
 import './App.css';
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
       fetch(process.env.REACT_APP_URL)
         .then((response) => response.json())
         .then((data) => {
-          const pickedWord = data[646].word;
+          const idx = index(data.length);
+          const pickedWord = data[idx].word;
           setWord(pickedWord);
         });
     }
