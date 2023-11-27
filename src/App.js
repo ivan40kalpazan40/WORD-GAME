@@ -9,6 +9,8 @@ function App() {
   const [guessWord, setGuessWord] = useState('');
   const [wordList, setWordList] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [grid, setGrid] = useState(Array(6).fill(null));
+  const [currentRow, setCurrentRow] = useState(0);
 
   useEffect(() => {
     function keyPressHandler(event) {
@@ -37,9 +39,19 @@ function App() {
         }
         // check if guessWord is equal to word - YOU WIN!!!
         if (guessWord === word) {
-          setGuessWord('You Win');
+          // setGuessWord('You Win');
+          const newGrid = [...grid];
+          newGrid[currentRow] = guessWord;
+          setGrid(newGrid);
           setIsGameOver(true);
           console.log(`You Win!!!`);
+        } else {
+          const newGrid = [...grid];
+          newGrid[currentRow] = guessWord;
+          setGrid(newGrid);
+          setGuessWord('');
+          setCurrentRow((row) => (row += 1));
+          if (currentRow === 5) setIsGameOver(true);
         }
       }
 
@@ -57,7 +69,7 @@ function App() {
     }
     document.addEventListener('keydown', keyPressHandler);
     return () => document.removeEventListener('keydown', keyPressHandler);
-  }, [guessWord, isGameOver]);
+  }, [guessWord, isGameOver, grid, currentRow]);
 
   useEffect(() => {
     if (effectRan.current === false) {
@@ -84,7 +96,12 @@ function App() {
         |&gt;: {unifyString(guessWord, 'display')}
       </h2>
 
-      <Grid word={word} />
+      <Grid
+        word={word}
+        grid={grid}
+        guessWord={guessWord}
+        currentRow={currentRow}
+      />
     </div>
   );
 }

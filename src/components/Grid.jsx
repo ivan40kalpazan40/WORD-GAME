@@ -1,14 +1,11 @@
 import Row from './Row';
 
-const Grid = ({ word }) => {
+const Grid = ({ word, grid, guessWord, currentRow }) => {
   return (
     <div className='flex flex-col mt-6 gap-1'>
-      <Row />
-      <Row />
-      <Row />
-      <Row />
-      <Row />
-      <Row />
+      {grid.map((line, i) => {
+        return <Row line={currentRow === i ? guessWord : line ?? ''} key={i} />;
+      })}
     </div>
   );
 };
