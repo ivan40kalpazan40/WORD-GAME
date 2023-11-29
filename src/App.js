@@ -43,6 +43,8 @@ function App() {
           const newGrid = [...grid];
           newGrid[currentRow] = guessWord;
           setGrid(newGrid);
+          setCurrentRow((row) => (row += 1));
+          setGuessWord('');
           setIsGameOver(true);
           console.log(`You Win!!!`);
         } else {
