@@ -3,9 +3,10 @@ const Row = ({ line, word, visited }) => {
   const row = [];
   for (let i = 0; i < 5; i++) {
     let className =
-      'flex border border-zinc-400 h-16 w-16 text-zinc-600 text-3xl items-center justify-center';
+      'flex border border-zinc-400 h-16 w-16 text-zinc-600 text-3xl font-bold items-center justify-center';
     let char = line[i];
     if (visited) {
+      className = className.replace('text-zinc-600', 'text-white');
       if (line[i] === word[i]) {
         className += ' bg-wordle-green text-white';
       } else if (word.includes(line[i])) {
