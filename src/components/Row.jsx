@@ -8,11 +8,11 @@ const Row = ({ line, word, visited }) => {
     if (visited) {
       className = className.replace('text-zinc-600', 'text-white');
       if (line[i] === word[i]) {
-        className += ' bg-wordle-green text-white';
+        className += ' bg-wordle-green';
       } else if (word.includes(line[i])) {
-        className += ' bg-wordle-gold text-white';
+        className += ' bg-wordle-gold';
       } else {
-        className += ' bg-wordle-grey text-white';
+        className += ' bg-wordle-grey';
       }
     }
     row.push(
