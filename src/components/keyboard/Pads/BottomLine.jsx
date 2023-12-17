@@ -1,13 +1,10 @@
 const BottomLine = () => {
+  const line = 'zxcvbnm'.split('');
   return (
-    <div>
-      <div>Z</div>
-      <div>X</div>
-      <div>C</div>
-      <div>V</div>
-      <div>B</div>
-      <div>N</div>
-      <div>M</div>
+    <div className='flex gap-1 mx-1'>
+      {line.map((char) => (
+        <div className='bg-slate-200 p-3 w-10 flex justify-center'>{char}</div>
+      ))}
     </div>
   );
 };

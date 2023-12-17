@@ -1,6 +1,6 @@
 const Enter = () => {
   return (
-    <div>Enter</div>
+    <div className="bg-slate-200 p-3">Enter</div>
   )
 }
 

@@ -1,16 +1,10 @@
 const TopLine = () => {
+  const line = 'qwertyuiop'.split('');
   return (
-    <div>
-      <div>Q</div>
-      <div>W</div>
-      <div>E</div>
-      <div>R</div>
-      <div>T</div>
-      <div>Y</div>
-      <div>U</div>
-      <div>I</div>
-      <div>O</div>
-      <div>P</div>
+    <div className='flex gap-1'>
+      {line.map((char) => (
+        <div className='bg-slate-200 p-3 w-10 flex justify-center'>{char}</div>
+      ))}
     </div>
   );
 };

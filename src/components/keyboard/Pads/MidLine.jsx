@@ -1,15 +1,10 @@
 const MidLine = () => {
+  const line = 'asdfghjkl'.split('');
   return (
-    <div>
-      <div>A</div>
-      <div>S</div>
-      <div>D</div>
-      <div>F</div>
-      <div>G</div>
-      <div>H</div>
-      <div>J</div>
-      <div>K</div>
-      <div>L</div>
+    <div className='flex gap-1'>
+      {line.map((char) => (
+        <div className='bg-slate-200 p-3 w-10 flex justify-center'>{char}</div>
+      ))}
     </div>
   );
 };

@@ -6,10 +6,10 @@ import TopLine from './Pads/TopLine';
 
 const KeyPad = ({ pad }) => {
   return (
-    <div>
+    <div className='flex flex-col mt-20 items-center gap-1'>
       <TopLine />
       <MidLine />
-      <div>
+      <div className='flex'>
         <Enter />
         <BottomLine />
         <Backspace />
