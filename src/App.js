@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import { randomIndex as index, unifyString } from './utils/helpers';
+import { kbd } from './utils/keyPad';
 import Grid from './components/Grid';
 import './App.css';
+import KeyPad from './components/keyboard/KeyPad';
 
 function App() {
   const effectRan = useRef(false);
@@ -11,6 +13,7 @@ function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [grid, setGrid] = useState(Array(6).fill(null));
   const [currentRow, setCurrentRow] = useState(0);
+  const [pad, setPad] = useState(kbd);
 
   useEffect(() => {
     function keyPressHandler(event) {
@@ -104,6 +107,7 @@ function App() {
         guessWord={guessWord}
         currentRow={currentRow}
       />
+      <KeyPad pad={pad} />
     </div>
   );
 }
