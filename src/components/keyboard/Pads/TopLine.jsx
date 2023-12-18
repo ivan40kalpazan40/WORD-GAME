@@ -7,7 +7,7 @@ const TopLine = () => {
         <div
           key={i}
           id={`btn-${char}`}
-          className='bg-slate-200 p-3 w-10 flex justify-center font-medium cursor-pointer btn'
+          className='bg-wordle-lightgrey p-3 w-10 flex justify-center font-medium cursor-pointer btn'
         >
           {unifyString(char, 'display')}
         </div>
