@@ -92,6 +92,24 @@ function App() {
     return () => (effectRan.current = true);
   }, []);
 
+  useEffect(() => {
+    function handleMouseClick(event) {
+      if (isGameOver) return;
+      const btn = event.target.closest('.btn');
+      const back = event.target.closest('.back');
+      const enter = event.target.closest('.enter');
+      if (btn) {
+        console.log(btn.innerHTML);
+      } else if (back) {
+        console.log(back);
+      } else if (enter) {
+        console.log(enter);
+      }
+    }
+    document.addEventListener('mousedown', handleMouseClick);
+    return () => document.removeEventListener('mousedown', handleMouseClick);
+  }, []);
+
   return (
     <div className='flex flex-col items-center content-center'>
       <h1 className='bg-slate-400 px-12 py-3 mt-10 text-rose-800 text-xl font-bold'>
