@@ -18,7 +18,6 @@ function App() {
   useEffect(() => {
     function keyPressHandler(event) {
       if (isGameOver) return;
-      console.log(`EVENT::: `, event.keyCode);
 
       // keyCode is 8 when Backspace is pressed
       if (event.keyCode === 8) {
@@ -99,16 +98,50 @@ function App() {
       const back = event.target.closest('.back');
       const enter = event.target.closest('.enter');
       if (btn) {
-        console.log(btn.innerHTML);
+        if (guessWord.length < 5) {
+          setGuessWord((guess) =>
+            guess.concat(unifyString(btn.innerHTML, 'store'))
+          );
+        }
       } else if (back) {
-        console.log(back);
+        setGuessWord((guess) => {
+          const sliced = guess.slice(0, -1);
+          return sliced;
+        });
       } else if (enter) {
-        console.log(enter);
+        //  if guessWord length is == 5
+        if (guessWord.length !== 5) return;
+        // HERE:
+        // check if guessWord is a valid word (it is one of the words in wordList state)
+        const idx = wordList.findIndex((word) => word === guessWord);
+        if (idx === -1) {
+          console.log(`Not A Valid Word`);
+          //  TODO: Throw error & handle it properly
+          return;
+        }
+        // check if guessWord is equal to word - YOU WIN!!!
+        if (guessWord === word) {
+          // setGuessWord('You Win');
+          const newGrid = [...grid];
+          newGrid[currentRow] = guessWord;
+          setGrid(newGrid);
+          setCurrentRow((row) => (row += 1));
+          setGuessWord('');
+          setIsGameOver(true);
+          console.log(`You Win!!!`);
+        } else {
+          const newGrid = [...grid];
+          newGrid[currentRow] = guessWord;
+          setGrid(newGrid);
+          setGuessWord('');
+          setCurrentRow((row) => (row += 1));
+          if (currentRow === 5) setIsGameOver(true);
+        }
       }
     }
     document.addEventListener('mousedown', handleMouseClick);
     return () => document.removeEventListener('mousedown', handleMouseClick);
-  }, []);
+  }, [guessWord, isGameOver, grid, currentRow]);
 
   return (
     <div className='flex flex-col items-center content-center'>
