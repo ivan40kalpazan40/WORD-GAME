@@ -1,6 +1,6 @@
 const Enter = () => {
   return (
-    <div className='bg-wordle-lightgrey p-3 w-16 flex justify-center cursor-pointer enter'>
+    <div className='rounded-md bg-wordle-lightgrey text-xs uppercase font-medium   p-3 h-14 w-16 flex items-center justify-center cursor-pointer enter'>
       Enter
     </div>
   );

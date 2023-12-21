@@ -1,6 +1,6 @@
 const Backspace = () => {
   return (
-    <div className='bg-wordle-lightgrey p-3 w-16 flex justify-center cursor-pointer back'>
+    <div className='rounded-md bg-wordle-lightgrey p-3 h-14 w-16 flex items-center justify-center cursor-pointer back'>
       <span className='material-symbols-outlined'>backspace</span>
     </div>
   );

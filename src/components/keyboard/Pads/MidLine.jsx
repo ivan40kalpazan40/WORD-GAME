@@ -7,7 +7,7 @@ const MidLine = () => {
         <div
           key={i}
           id={`btn-${char}`}
-          className='bg-wordle-lightgrey p-3 w-10 flex justify-center font-medium cursor-pointer btn'
+          className='rounded-md bg-wordle-lightgrey text-xl p-3 h-14 w-10 flex items-center justify-center font-medium cursor-pointer btn'
         >
           {unifyString(char, 'display')}
         </div>
