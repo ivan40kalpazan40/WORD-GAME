@@ -46,6 +46,11 @@ function App() {
           newGrid[currentRow] = guessWord;
           setGrid(newGrid);
           setCurrentRow((row) => (row += 1));
+          //
+          for (let char of word) {
+            pad.set(char, 'guessed');
+          }
+          //
           setGuessWord('');
           setIsGameOver(true);
           console.log(`You Win!!!`);
@@ -53,6 +58,18 @@ function App() {
           const newGrid = [...grid];
           newGrid[currentRow] = guessWord;
           setGrid(newGrid);
+          //
+          for (let charIdx in guessWord) {
+            let char = guessWord[charIdx];
+            if (char === word[charIdx]) {
+              pad.set(char, 'guessed');
+            } else if (word.includes(char)) {
+              pad.set(char, 'close-guess');
+            } else {
+              pad.set(char, 'visited');
+            }
+          }
+          //
           setGuessWord('');
           setCurrentRow((row) => (row += 1));
           if (currentRow === 5) setIsGameOver(true);
@@ -73,7 +90,7 @@ function App() {
     }
     document.addEventListener('keydown', keyPressHandler);
     return () => document.removeEventListener('keydown', keyPressHandler);
-  }, [guessWord, isGameOver, grid, currentRow]);
+  }, [guessWord, isGameOver, grid, currentRow, pad]);
 
   useEffect(() => {
     if (effectRan.current === false) {
@@ -126,6 +143,11 @@ function App() {
           newGrid[currentRow] = guessWord;
           setGrid(newGrid);
           setCurrentRow((row) => (row += 1));
+          //
+          for (let char of word) {
+            pad.set(char, 'guessed');
+          }
+          //
           setGuessWord('');
           setIsGameOver(true);
           console.log(`You Win!!!`);
@@ -133,6 +155,18 @@ function App() {
           const newGrid = [...grid];
           newGrid[currentRow] = guessWord;
           setGrid(newGrid);
+          //
+          for (let charIdx in guessWord) {
+            let char = guessWord[charIdx];
+            if (char === word[charIdx]) {
+              pad.set(char, 'guessed');
+            } else if (word.includes(char)) {
+              pad.set(char, 'close-guess');
+            } else {
+              pad.set(char, 'visited');
+            }
+          }
+          //
           setGuessWord('');
           setCurrentRow((row) => (row += 1));
           if (currentRow === 5) setIsGameOver(true);
@@ -141,7 +175,7 @@ function App() {
     }
     document.addEventListener('mousedown', handleMouseClick);
     return () => document.removeEventListener('mousedown', handleMouseClick);
-  }, [guessWord, isGameOver, grid, currentRow]);
+  }, [guessWord, isGameOver, grid, currentRow, pad]);
 
   return (
     <div className='flex flex-col items-center content-center'>

@@ -1,15 +1,13 @@
 import { unifyString } from '../../../utils/helpers';
 const TopLine = ({ pad }) => {
   const line = 'qwertyuiop'.split('');
-  let className =
-    'rounded-md bg-wordle-lightgrey text-xl p-3 h-14 w-10 flex items-center justify-center font-medium cursor-pointer btn';
   return (
     <div className='flex gap-1'>
       {line.map((char, i) => {
+        let className =
+          'rounded-md bg-wordle-lightgrey text-xl p-3 h-14 w-10 flex items-center justify-center font-medium cursor-pointer btn';
         const status = pad.get(char);
         switch (status) {
-          case 'free':
-            break;
           case 'visited':
             className = className.replace(
               'bg-wordle-lightgrey',
