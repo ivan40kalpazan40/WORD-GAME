@@ -7,11 +7,11 @@ import TopLine from './Pads/TopLine';
 const KeyPad = ({ pad }) => {
   return (
     <div className='flex flex-col mt-20 items-center gap-2'>
-      <TopLine />
-      <MidLine />
+      <TopLine pad={pad} />
+      <MidLine pad={pad} />
       <div className='flex'>
         <Enter />
-        <BottomLine />
+        <BottomLine pad={pad} />
         <Backspace />
       </div>
     </div>
