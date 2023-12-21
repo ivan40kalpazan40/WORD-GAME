@@ -40,5 +40,3 @@ const TopLine = ({ pad }) => {
 };
 
 export default TopLine;
-
-// pad.get(char) = 'free' or 'yellow' or 'green' or 'visited'
