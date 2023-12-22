@@ -4,6 +4,7 @@ import { kbd } from './utils/keyPad';
 import Grid from './components/Grid';
 import './App.css';
 import KeyPad from './components/keyboard/KeyPad';
+import HeadBar from './components/head/HeadBar';
 
 function App() {
   const effectRan = useRef(false);
@@ -179,13 +180,7 @@ function App() {
 
   return (
     <div className='flex flex-col items-center content-center'>
-      <h1 className='bg-slate-400 px-12 py-3 mt-10 text-rose-800 text-xl font-bold'>
-        {unifyString(word, 'display')}
-      </h1>
-      <h2 className='bg-slate-400 px-12 py-3 mt-10 text-rose-800 text-xl font-bold'>
-        |&gt;: {unifyString(guessWord, 'display')}
-      </h2>
-
+      <HeadBar />
       <Grid
         word={word}
         grid={grid}
