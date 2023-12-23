@@ -5,6 +5,7 @@ import Grid from './components/Grid';
 import './App.css';
 import KeyPad from './components/keyboard/KeyPad';
 import HeadBar from './components/head/HeadBar';
+import AuthModal from './components/modals/AuthModal';
 
 function App() {
   const effectRan = useRef(false);
@@ -15,6 +16,12 @@ function App() {
   const [grid, setGrid] = useState(Array(6).fill(null));
   const [currentRow, setCurrentRow] = useState(0);
   const [pad, setPad] = useState(kbd);
+  const [openModal, setOpenModal] = useState({
+    authModal: false,
+    helpModal: false,
+    statModal: false,
+    settingModal: false,
+  });
 
   useEffect(() => {
     function keyPressHandler(event) {
@@ -180,7 +187,8 @@ function App() {
 
   return (
     <div className='flex flex-col items-center content-center'>
-      <HeadBar />
+      <HeadBar openModal={openModal} setOpenModal={setOpenModal} />
+      <AuthModal open={openModal.authModal} setOpenModal={setOpenModal} />
       <Grid
         word={word}
         grid={grid}
