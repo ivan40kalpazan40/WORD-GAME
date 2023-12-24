@@ -4,7 +4,7 @@ const StackMenu = ({ open, setOpenModal }) => {
       <span
         className='material-symbols-outlined text-3xl cursor-pointer'
         onClick={() =>
-          setOpenModal((oldState) => ({ ...oldState, authModal: true }))
+          setOpenModal((oldState) => ({ ...oldState, authModal: !open }))
         }
       >
         menu
