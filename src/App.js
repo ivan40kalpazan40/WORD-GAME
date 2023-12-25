@@ -26,7 +26,14 @@ function App() {
   useEffect(() => {
     function keyPressHandler(event) {
       if (isGameOver) return;
-
+      if (event.keyCode === 27) {
+        setOpenModal({
+          authModal: false,
+          helpModal: false,
+          statModal: false,
+          settingModal: false,
+        });
+      }
       // keyCode is 8 when Backspace is pressed
       if (event.keyCode === 8) {
         setGuessWord((guess) => {
@@ -99,7 +106,7 @@ function App() {
     }
     document.addEventListener('keydown', keyPressHandler);
     return () => document.removeEventListener('keydown', keyPressHandler);
-  }, [guessWord, isGameOver, grid, currentRow, pad]);
+  }, [guessWord, isGameOver, grid, currentRow, pad, openModal]);
 
   useEffect(() => {
     if (effectRan.current === false) {
