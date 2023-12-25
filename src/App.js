@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { randomIndex as index, unifyString } from './utils/helpers';
+import { randomIndex as index, isLatin, unifyString } from './utils/helpers';
 import { kbd } from './utils/keyPad';
 import Grid from './components/Grid';
 import './App.css';
@@ -90,7 +90,8 @@ function App() {
           `Letter ${event.key} with keycode ${event.keyCode} is valid pick. Guess length = ${guessWord.length}`
         );
         if (guessWord.length < 5) {
-          setGuessWord((guess) => guess.concat(event.key));
+          if (isLatin(event.key))
+            setGuessWord((guess) => guess.concat(event.key));
         }
       } else {
         console.log(`This is invalid key.`);

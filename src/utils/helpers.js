@@ -10,3 +10,12 @@ export const unifyString = (string, criteria) => {
       return string.toUpperCase();
   }
 };
+
+export const isLatin = (char) => {
+  if (
+    (char.charCodeAt(0) >= 65 && char.charCodeAt(0) <= 90) ||
+    (char.charCodeAt(0) >= 97 && char.charCodeAt(0) <= 122)
+  )
+    return true;
+  return false;
+};
