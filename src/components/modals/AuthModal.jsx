@@ -49,17 +49,17 @@ const AuthModal = ({ open, setOpenModal }) => {
           York Times
         </li>
         <li className='px-3 py-1 hover:bg-slate-200 cursor-pointer flex gap-5'>
-          <span class='material-symbols-outlined'>skillet</span>New York Times
+          <span className='material-symbols-outlined'>skillet</span>New York Times
           Cooking
         </li>
         <li className='px-3 py-1 hover:bg-slate-200 cursor-pointer flex gap-5'>
-          <span class='material-symbols-outlined'>
+          <span className='material-symbols-outlined'>
             tools_pliers_wire_stripper
           </span>
           New York Times Wirecutter
         </li>
         <li className='px-3 py-1 hover:bg-slate-200 cursor-pointer flex gap-5'>
-          <span class='material-symbols-outlined'>sports_and_outdoors</span>The
+          <span className='material-symbols-outlined'>sports_and_outdoors</span>The
           Athletic
         </li>
       </ul>
