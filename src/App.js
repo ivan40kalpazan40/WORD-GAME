@@ -25,7 +25,6 @@ function App() {
 
   useEffect(() => {
     function keyPressHandler(event) {
-      if (isGameOver) return;
       if (event.keyCode === 27) {
         setOpenModal({
           authModal: false,
@@ -34,6 +33,7 @@ function App() {
           settingModal: false,
         });
       }
+      if (isGameOver) return;
       // keyCode is 8 when Backspace is pressed
       if (event.keyCode === 8) {
         setGuessWord((guess) => {
