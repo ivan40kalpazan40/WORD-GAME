@@ -98,7 +98,9 @@ function App() {
         );
         if (guessWord.length < 5) {
           if (isLatin(event.key))
-            setGuessWord((guess) => guess.concat(event.key));
+            setGuessWord((guess) =>
+              guess.concat(unifyString(event.key, 'store'))
+            );
         }
       } else {
         console.log(`This is invalid key.`);
