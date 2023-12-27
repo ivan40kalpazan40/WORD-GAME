@@ -79,7 +79,7 @@ function App() {
             if (char === word[charIdx]) {
               pad.set(char, 'guessed');
             } else if (word.includes(char)) {
-              pad.set(char, 'close-guess');
+              if (pad.get(char) !== 'guessed') pad.set(char, 'close-guess');
             } else {
               pad.set(char, 'visited');
             }
@@ -179,7 +179,7 @@ function App() {
             if (char === word[charIdx]) {
               pad.set(char, 'guessed');
             } else if (word.includes(char)) {
-              pad.set(char, 'close-guess');
+              if (pad.get(char) !== 'guessed') pad.set(char, 'close-guess');
             } else {
               pad.set(char, 'visited');
             }
